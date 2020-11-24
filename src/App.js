@@ -2,14 +2,28 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import Chat from './components/Chat';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 function App() {
   return (
     <div className="app">
-      <Header/>
-      <div className="app_body">
-        <Sidebar/>
-      </div>
+      <Router>
+        <Header/>
+        <div className="app_body">
+            <Sidebar/>
+
+            <Switch>
+              <Route path="/room/:roomId">
+                <Chat/>
+              </Route>
+              <Route path="/">
+                <h1>Welcome</h1>
+              </Route>
+            </Switch>
+
+        </div>
+      </Router>
     </div>
   );
 }
